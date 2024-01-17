@@ -1,26 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.StaticFiles;
 using catsapi.Models;
+using catsapi.Data;
 
 namespace catsapi.Services
 {
     public class CatService : IService
     {
-        private readonly CatContext _context;
+        private readonly IRepository<Cat> _repository;
 
-        public CatService(CatContext ctx) {
-            _context = ctx;
+        public CatService(IRepository<Cat> repo) {
+            _repository = repo;
         }
         
         public async Task<ActionResult<IEnumerable<Cat>>> GetCats()
         {          
-            return await _context.Gatos?.ToListAsync();
+            return await _repository.GetAll();
         }
 
     }
