@@ -1,7 +1,7 @@
-
 using Microsoft.AspNetCore.Mvc;
 using catsapi.Models;
 using catsapi.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace catsapi.Services
 {
