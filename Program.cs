@@ -1,8 +1,14 @@
+using catsapi.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<CatContext>(opt =>
+    opt.UseInMemoryDatabase("CatDatabase"));
 
 var app = builder.Build();
 
