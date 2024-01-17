@@ -18,5 +18,14 @@ namespace catsapi.Services
             return await _repository.GetAll();
         }
 
+        public async Task<ActionResult<Cat>> GetCat(long id)
+        {
+          return await _repository.Get(id);
+        }
+
+        public async Task<ActionResult<Cat>> PostCat(Cat cat)
+        {
+            return await _repository.Add(cat);
+        }
     }
 }

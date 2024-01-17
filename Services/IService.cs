@@ -13,6 +13,8 @@ namespace catsapi.Services
     public interface IService 
     {
         public Task<ActionResult<IEnumerable<Cat>>> GetCats();
+        public Task<ActionResult<Cat>> GetCat(long id);
+        public Task<ActionResult<Cat>> PostCat(Cat cat);
     }
 }
 
