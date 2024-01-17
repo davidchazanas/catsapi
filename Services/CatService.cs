@@ -13,19 +13,29 @@ namespace catsapi.Services
             _repository = repo;
         }
         
-        public async Task<ActionResult<IEnumerable<Cat>>> GetCats()
+        public async Task<IEnumerable<Cat>> GetCats()
         {          
             return await _repository.GetAll();
         }
 
-        public async Task<ActionResult<Cat>> GetCat(long id)
+        public async Task<Cat> GetCat(long id)
         {
           return await _repository.Get(id);
         }
 
-        public async Task<ActionResult<Cat>> PostCat(Cat cat)
+        public async Task<Cat> PostCat(Cat cat)
         {
             return await _repository.Add(cat);
+        }
+
+        public async Task<Cat> Delete(long id)
+        {
+            return await _repository.Delete(id);
+        }
+
+        public async Task<Cat> PutCat(Cat cat)
+        {
+            return await _repository.Update(cat);
         }
     }
 }
