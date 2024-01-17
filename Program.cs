@@ -1,4 +1,7 @@
+using catsapi.Data;
+using catsapi.Data.EFCore;
 using catsapi.Models;
+using catsapi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+
+builder.Services.AddScoped<IRepository<Cat>, EFCoreCatRepository>();
+builder.Services.AddScoped<IService, CatService>();
 builder.Services.AddDbContext<CatContext>(opt =>
     opt.UseInMemoryDatabase("CatDatabase"));
 
